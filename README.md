@@ -15,62 +15,62 @@ Usage
 
 ### server.js
 ```js
-    var http = require('http'),
-        fs = require('fs');
+var http = require('http'),
+    fs = require('fs');
 
-    var server = http.createServer(function(req, res) {
-        fs.createReadStream(__dirname + '/index.html').pipe(res);
-    });
+var server = http.createServer(function(req, res) {
+    fs.createReadStream(__dirname + '/index.html').pipe(res);
+});
 
-    require('socket.io')(server)
-        .use(require('chat-anarchy-server')())
-        .use(require('chat-anarchy-whobot')());
+require('socket.io')(server)
+    .use(require('chat-anarchy-server')())
+    .use(require('chat-anarchy-whobot')());
 
-    server.listen(process.env.PORT || 1844, process.env.IP || '127.0.0.1', function() {
-        console.log("Chat anarchy is listening on port %d", server.address().port);
-    });
+server.listen(process.env.PORT || 1844, process.env.IP || '127.0.0.1', function() {
+    console.log("Chat anarchy is listening on port %d", server.address().port);
+});
 ```
 
 ### index.html
 ```
-    <!doctype html>
-    <title>/</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        * {
-            font: 18px monospace;
-        }
-    </style>
-    <input autofocus style="width:75%">
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-        var socket = io()
-            .on('connect', function() {
-                document.title = location.pathname;
-                socket.emit('join', location.pathname);
-            })
-            .on('announce', log)
-            .on('message', function(data) {
-                log(data.u + ': ' + data.m);
-            })
-            .on('count', function(count) {
-                document.title = '(' + count + ')' + location.pathname;
-            });
+<!doctype html>
+<title>/</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    * {
+        font: 18px monospace;
+    }
+</style>
+<input autofocus style="width:75%">
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    var socket = io()
+        .on('connect', function() {
+            document.title = location.pathname;
+            socket.emit('join', location.pathname);
+        })
+        .on('announce', log)
+        .on('message', function(data) {
+            log(data.u + ': ' + data.m);
+        })
+        .on('count', function(count) {
+            document.title = '(' + count + ')' + location.pathname;
+        });
 
-        var input = document.getElementsByTagName('input')[0];
-        input.onchange = function() {
-            socket.send(this.value);
-            this.value = '';
-        };
+    var input = document.getElementsByTagName('input')[0];
+    input.onchange = function() {
+        socket.send(this.value);
+        this.value = '';
+    };
 
-        function log(m) {
-            var p = document.createElement('p');
-            p.appendChild(document.createTextNode(m));
-            p.title = Date();
-            document.body.insertBefore(p, input);
-            p.scrollIntoView();
-        }
-    </script>
+    function log(m) {
+        var p = document.createElement('p');
+        p.appendChild(document.createTextNode(m));
+        p.title = Date();
+        document.body.insertBefore(p, input);
+        p.scrollIntoView();
+    }
+</script>
 ```
 
 Whobot will now start responding to the messages (case-insensitive) `who`,

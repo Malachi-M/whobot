@@ -32,7 +32,7 @@ server.listen(process.env.PORT || 1844, process.env.IP || '127.0.0.1', function(
 ```
 
 ### index.html
-```
+``` html
 <!doctype html>
 <title>/</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">

@@ -1,5 +1,5 @@
-whobot – A `who` bot for Chat Anarchy
-========================================
+whobot – A 'who' bot for chat anarchy
+=====================================
 
 whobot is a chat bot for chat anarchy for the `who` command. Send `who`, `who?`,
 `who's here?`, or `who is here?` to get a roster of guests in the room.
@@ -11,7 +11,7 @@ Usage
 -----
 `whobot` is socket.io middleware for chat anarchy.
 
-    npm install chat-anarchy-whobot
+    npm install --save chat-anarchy-whobot
 
 ### server.js
 ```js

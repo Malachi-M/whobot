@@ -1,0 +1,34 @@
+{
+  "name": "chat-anarchy-whobot",
+  "version": "1.0.0",
+  "description": "A chat anarchy bot to announce who is in the room.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chat-anarchy/whobot"
+  },
+  "main": "whobot.js",
+  "dependencies": {
+    "set": "^1.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "socket-io",
+    "socket.io",
+    "chat",
+    "anarchy",
+    "chat-anarchy",
+    "who",
+    "bot"
+  ],
+  "author": {
+    "name": "Benjamin Barber"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/barberboy/chat-anarchy-timebot/issues"
+  },
+  "homepage": "https://github.com/barberboy/chat-anarchy-timebot"
+}
